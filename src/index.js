@@ -25,11 +25,13 @@ export const deepCopy = (obj) => {
     return obj;
   }
 
-  if (Array.isArray(obj)) {
-    return obj.map(elem => deepCopy(elem));
-  } else {
-    return Object.entries(obj).reduce((accum, [prop, value]) => (accum[prop] = deepCopy(value), accum), {});
-  }
+  const copy = Array.isArray(obj) ? [] : {};
+  return Object.entries(obj).reduce((accum, [prop, value]) => (accum[prop] = deepCopy(value), accum), copy);
+  // if (Array.isArray(obj)) {
+  //   return obj.map(elem => deepCopy(elem));
+  // } else {
+  //   return Object.entries(obj).reduce((accum, [prop, value]) => (accum[prop] = deepCopy(value), accum), {});
+  // }
 };
 
 /**
