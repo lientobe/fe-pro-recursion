@@ -24,6 +24,7 @@ export const deepCopy = (obj) => {
   if (typeof obj !== 'object') {
     return obj;
   }
+  
   if (Array.isArray(obj)) {
     return obj.map(elem => deepCopy(elem));
   } else {
