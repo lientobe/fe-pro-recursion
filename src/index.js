@@ -24,7 +24,11 @@ export const deepCopy = (obj) => {
   if (typeof obj !== 'object') {
     return obj;
   }
- return Array.isArray(obj) ? obj.map(elem => deepCopy(elem)) : Object.entries(obj).reduce((accum, [prop, value]) => (accum[prop] = deepCopy(value), accum), {});
+  if (Array.isArray(obj)) {
+    return obj.map(elem => deepCopy(elem));
+  } else {
+    return Object.entries(obj).reduce((accum, [prop, value]) => (accum[prop] = deepCopy(value), accum), {});
+  }
 };
 
 /**
