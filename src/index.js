@@ -21,10 +21,10 @@ export const deepEqual = (obj, anotherObject) => {
  * их различить берем метод Array.isArray и он на массивах вернет тру
  */
 export const deepCopy = (obj) => {
-  if (typeof obj !== 'object') {
+  if (typeof obj !== 'object' || obj === null || obj === undefined ) {
     return obj;
   }
-  
+
   if (Array.isArray(obj)) {
     return obj.map(elem => deepCopy(elem));
   } else {
